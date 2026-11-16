@@ -11,15 +11,10 @@ class ProjectFormPage extends StatefulWidget {
 class _ProjectFormPageState extends State<ProjectFormPage> {
   final _formKey = GlobalKey<FormState>();
 
-  // These values will be shown in the confirmation dialog in the next step.
-  // ignore: unused_field
   String _projectName = '';
-  // ignore: unused_field
   String _description = '';
   String _category = 'Web Development';
-  // ignore: unused_field
   String _technologies = '';
-  // ignore: unused_field
   String _projectLink = '';
 
   final List<String> _categories = [
@@ -167,8 +162,7 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor:
-                          WidgetStateProperty.all(Colors.indigo),
+                      backgroundColor: WidgetStateProperty.all(Colors.indigo),
                     ),
                     onPressed: () {
                       if (_formKey.currentState?.validate() ?? false) {
@@ -176,8 +170,18 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                           context: context,
                           builder: (dialogContext) {
                             return AlertDialog(
-                              title: const Text(
-                                'Proyek berhasil ditambahkan!',
+                              title: const Text('Proyek berhasil ditambahkan!'),
+                              content: SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Nama Proyek: $_projectName'),
+                                    Text('Deskripsi: $_description'),
+                                    Text('Kategori: $_category'),
+                                    Text('Teknologi: $_technologies'),
+                                    Text('Tautan: $_projectLink'),
+                                  ],
+                                ),
                               ),
                               actions: [
                                 TextButton(
