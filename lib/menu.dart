@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myportofolio_mobile/project_form.dart';
 import 'package:myportofolio_mobile/widgets/left_drawer.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -31,13 +32,12 @@ class MyHomePage extends StatelessWidget {
         onHomeTap: () => Navigator.pop(context),
         onAddProjectTap: () {
           Navigator.pop(context);
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              const SnackBar(
-                content: Text('Halaman tambah proyek belum tersedia.'),
-              ),
-            );
+          Navigator.push(
+            context,
+            MaterialPageRoute<void>(
+              builder: (context) => const ProjectFormPage(),
+            ),
+          );
         },
       ),
       // Body halaman utama dengan padding di sekelilingnya.
